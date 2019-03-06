@@ -110,8 +110,8 @@ cq.on('failed', function (data) {
 //队列开始执行
 var LIST = [1, 2, 3, 5, 7, 9];
 cq.done(LIST, function (data, callback) {
-	//此方法体为用户业务层代码
-	//data为队列逐个遍历的元素 1 || 2 || 3 || 5 || 7 || 9
+    //此方法体为用户业务层代码
+    //data为队列逐个遍历的元素 1 || 2 || 3 || 5 || 7 || 9
     console.log('正在执行', data);
     callback('控制失败');//成功则不传参数
 });

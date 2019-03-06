@@ -1,0 +1,15 @@
+{
+  "name": "controlq",
+  "version": "1.0.0",
+  "description": "Queue management for batch control",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "controlq",
+    "quee"
+  ],
+  "author": "Scot Wang",
+  "license": "ISC"
+}

@@ -1,15 +1,26 @@
 {
   "name": "controlq",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Queue management for batch control",
   "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
   "scripts": {
     "test": "node test.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deepblue1837/controlq.git"
+  },
   "keywords": [
     "controlq",
-    "quee"
+    "queue"
   ],
-  "author": "Scot Wang",
-  "license": "ISC"
+  "author": "scott wang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deepblue1837/controlq/issues"
+  },
+  "homepage": "https://github.com/deepblue1837/controlq#readme"
 }

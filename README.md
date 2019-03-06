@@ -1,9 +1,5 @@
 # controlq
 
-[TOC]
-
-
-
 ## Features
 
 - NodeJS队列管理模块

@@ -1,13 +1,14 @@
 {
   "name": "controlq",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Queue management for batch control",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "test": "node test.js"
+    "disposable": "node test/disposable.js",
+    "continuous": "node test/continuous.js"
   },
   "repository": {
     "type": "git",

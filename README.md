@@ -23,14 +23,6 @@ NodeJs V0.12.17以上版本
 
 ## new Controlq(type, options)
 
-```
-const Controlq = require('controlq');
-const options = {interval: 0, retryCount: 0, successConditions: 100};
-var cq = new Controlq('disposable', options);
-```
-
-
-
 ### type
 
 - disposable: 按批次执行一个队列，可以实时监听每个元素的运行状态和结果，队列执行完成即可得到整体结果
@@ -41,10 +33,23 @@ var cq = new Controlq('disposable', options);
 - interval: 队列每个元素运行所间隔的毫秒数,默认为0
 - retryCount: 队列每个元素执行失败后需要重试的次数，默认为0，不重试
 - successConditions：仅在disposable类下生效，队列运行完成后，判定本批次队列运行结果成功的百分比数，默认100，必须每个都成功才判定成功。
+- timeout: 仅在continuous生效，每个队列元素在timeout设定时长内没有返回执行结果，即为失败超时。
 
 
 
 ## disposable
+
+### 创建实例对象
+
+#### new Controlq(type, options)
+
+```
+const Controlq = require('controlq');
+const options = {interval: 0, retryCount: 0, successConditions: 100};
+var cq = new Controlq('disposable', options);
+```
+
+
 
 ### 事件
 
@@ -102,7 +107,12 @@ cq.on('failed', function (data) {
 #### done(list, controller)
 
 - list: 数组，需要批量执行的队列集合
-- controller: 函数方法，队列运行所执行的回调方法。会把队列中每一个元素传递到方法中进行执行
+- controller: 每个队列元素将被调用执行的方法函数，参数（data, callback）。
+
+##### 参数
+
+- data: 队列中取出来的数据内容data。
+- callback： 通知实例对象，当前数据运行结果的回调函数，入参（error, result）
 
 
 
@@ -121,7 +131,56 @@ cq.done(LIST, function (data, callback) {
 
 ## continuous
 
-### 事件
+### 创建实例对象
+
+```
+const Controlq = require('controlq');
+const cq = new Controlq('continuous', {interval: 3000, retryCount: 1, timeout: 5000});
+```
+
+
 
 ### 方法
+
+#### done(controller)
+
+声明队列运行方法函数
+
+- controller: 每个队列元素将被调用执行的方法函数，参数（data, callback）。
+
+##### 参数
+
+- data: 队列中取出来的数据内容data。
+- callback： 通知实例对象，当前数据运行结果的回调函数，入参（error, result）
+
+#### add(data, [options], callback)
+
+向队列中添加/追加待执行的元素
+
+- data: 被运行的数据内容。
+- options： 【可选参数】，配置当前被运行数据的参数。
+- callback：当前数据运行结束后对应的回调函数，参数为(error, result)。
+
+
+
+##### options
+
+- priority: 1||2||3。 优先级{1：高，2：中，3：低}，队列优先取出高优先级的元素来执行。默认为2，中等。
+- count: 当前数据运行后，会得到几次结果响应，才算结束，执行下一条。默认位1,执行一次响应一次。
+
+## 测试
+
+### disposable
+
+```
+npm run disposable
+```
+
+
+
+### continuous
+
+```
+npm run continuous
+```
 

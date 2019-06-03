@@ -1,6 +1,6 @@
 {
   "name": "controlq",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Queue management for batch control",
   "main": "index.js",
   "directories": {

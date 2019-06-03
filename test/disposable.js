@@ -30,3 +30,18 @@ cq.done(LIST, function (id, callback) {
     callback();
 });
 
+// setTimeout(function () {
+//     console.log('暂停队列15秒', new Date());
+//     cq.pause();
+//     setTimeout(function () {
+//         console.log('继续执行队列', new Date());
+//         cq.resume();
+//     }, 15000)
+// }, 5000);
+
+setTimeout(function () {
+    var result = cq.cancel();
+    console.log('取消正在执行的队列', result);
+}, 5000);
+
+

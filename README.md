@@ -109,6 +109,18 @@ cq.on('failed', function (data) {
 - list: 数组，需要批量执行的队列集合
 - controller: 每个队列元素将被调用执行的方法函数，参数（data, callback）。
 
+#### pause()
+
+暂停正在执行的队列
+
+#### resume()
+
+继续执行被暂停的队列
+
+#### cancel()
+
+取消正在执行的队列，返回一个已经执行成功的元素数组
+
 ##### 参数
 
 - data: 队列中取出来的数据内容data。
